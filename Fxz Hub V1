@@ -1,0 +1,108 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/jensonhirst/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "FxZ Hub V1", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+    Name = "Join A Discord if you want to support me",
+    Callback = function()
+        setclipboard("https://discord.gg/f9CEfBPJ")
+        OrionLib:MakeNotification({
+            Name = "Discord Link Copied",
+            Content = "The Discord link has been copied to your clipboard.",
+            Image = "rbxassetid://4483345998",
+            Time = 5
+        })
+    end    
+})
+
+Tab:AddButton({
+	Name = "Auto Clicker 10x",
+	Callback = function()
+      		print("button pressed")
+            local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Click = ReplicatedStorage:FindFirstChild("Click") and ReplicatedStorage.Click:FindFirstChild("Click")
+
+while true do
+    if Click then
+        Click:FireServer()
+    end
+    task.wait(0.01) -- Clicks every 0.01 seconds (100 times per second)
+end
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Auto Upgrade",
+	Callback = function()
+      		print("button pressed")
+            local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Shop = ReplicatedStorage:FindFirstChild("Shop")
+
+-- List of all upgrade RemoteEvents
+local upgrades = {
+    ReplicatedStorage:FindFirstChild("Rebirth"),
+    Shop and Shop:FindFirstChild("oTheClicker"),
+    Shop and Shop:FindFirstChild("nCatsPowerPlant"),
+    Shop and Shop:FindFirstChild("mGodClicker"),
+    Shop and Shop:FindFirstChild("lCatsTemple"),
+    Shop and Shop:FindFirstChild("kPopeClicker"),
+    Shop and Shop:FindFirstChild("jCatsPyramid"),
+    Shop and Shop:FindFirstChild("iEmperorClicker"),
+    Shop and Shop:FindFirstChild("gKingClicker"),
+    Shop and Shop:FindFirstChild("hCatsFactory"),
+    Shop and Shop:FindFirstChild("fCatsPump"),
+    Shop and Shop:FindFirstChild("ePresidentClicker"),
+    Shop and Shop:FindFirstChild("dCatsFarm"),
+    Shop and Shop:FindFirstChild("cMrClicker"),
+    Shop and Shop:FindFirstChild("bAutoClicker"),
+    Shop and Shop:FindFirstChild("aCursor"),
+}
+
+for _, upgrade in ipairs(upgrades) do
+    if upgrade and upgrade:IsA("RemoteEvent") then
+        upgrade:FireServer()
+    end
+end
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Auto Rebirth",
+	Callback = function()
+      		print("button pressed")
+            local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Rebirth = ReplicatedStorage:FindFirstChild("Rebirth")
+
+if Rebirth and Rebirth:IsA("RemoteEvent") then
+    Rebirth:FireServer()
+end
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Auto Upgrade Fish",
+	Callback = function()
+      		print("button pressed")
+            local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local FishUpgrades = ReplicatedStorage:FindFirstChild("FishUpgrades")
+
+-- List of all FishUpgrade RemoteEvents
+local upgrades = {
+    FishUpgrades and FishUpgrades:FindFirstChild("s2"),
+    FishUpgrades and FishUpgrades:FindFirstChild("s1"),
+    FishUpgrades and FishUpgrades:FindFirstChild("s3"),
+    FishUpgrades and FishUpgrades:FindFirstChild("s5"),
+}
+
+for _, upgrade in ipairs(upgrades) do
+    if upgrade and upgrade:IsA("RemoteEvent") then
+        upgrade:FireServer()
+    end
+end
+  	end    
+})
